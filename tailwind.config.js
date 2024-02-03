@@ -22,6 +22,10 @@ module.exports = {
       whitespace: {
         'pre-line': 'pre-line',
       },
+      fontFamily: {
+        'sans': ['Montserrat', 'sans-serif'],
+        'space': ['Space Grotesk', 'sans-serif']
+      },
     },
   },
   variants: {
