@@ -26,6 +26,9 @@ module.exports = {
         'sans': ['Montserrat', 'sans-serif'],
         'space': ['Space Grotesk', 'sans-serif']
       },
+      boxShadow: {
+        'custom-shadow': '0px 5px 15px 0px #252C6126, 0px 2px 4px 0px #8890C233',
+      },
     },
   },
   variants: {

@@ -10,7 +10,7 @@ const page = () => {
     <>
       {/* landing page section */}
       <div className="flex py-10 items-start">
-        <div className="flex flex-1 flex-col items-end">
+        <div className="flex flex-1 flex-col">
           <div className="w-2/3">
             <Image src={WelcomeImg} alt="" />
             <h1 className="text-gray-700 font-bold text-7xl">
@@ -18,7 +18,7 @@ const page = () => {
             </h1>
             <h2 className="text-3xl font-semibold w-2/3 my-2 text-gray-700">Thanks to the sponsors that make The Grove possible.</h2>
             <p className="text-base font-normal text-gray-700">
-                Please consider supporting brands that support the growthof
+                Please consider supporting brands that support the growth of
                 pickleball.
             </p>
             <span className="text-base font-semibold text-primary my-2">
@@ -39,7 +39,7 @@ const page = () => {
       <h1 className="text-9xl font-black mb-4 uppercase text-primary pt-48 pb-24">
           Become a Sponsor
         </h1>
-        <div className="inline-block w-3/4 mx-auto bg-white py-20 px-11 -mb-20 relative z-10">
+        <div className="inline-block w-3/5 mx-auto bg-white p-20 -mb-20 relative z-10">
           <h2 className="text-4xl font-light">Interested in talking sponsorship</h2>
           <p className="text-lg font-normal my-2">
             The Grove Pickleball will create and customize a sponsorship package
@@ -49,7 +49,7 @@ const page = () => {
             showcasing your company to the ever-growing audience of pickleball,
             which includes on-court signage & marketing, and so much more!
           </p>
-          <p className="text-lg font-normal my-4 text-gray-600">Fill out the form below to get started.</p>
+          <p className="text-lg font-normal my-5 text-gray-600">Fill out the form below to get started.</p>
           <form className="flex flex-col">
             <div className="flex">
                 <div className="flex-1 flex flex-col gap-5 w-full mr-2">
@@ -84,7 +84,7 @@ const page = () => {
             ></textarea>
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-700 text-white uppercase w-1/6 mt-2 rounded-md"
+              className="p-4 bg-blue-700 text-white w-24 mt-8 rounded-md"
             >
               Submit
             </button>
