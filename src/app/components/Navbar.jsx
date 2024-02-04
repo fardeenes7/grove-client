@@ -10,22 +10,22 @@ export default function Navbar() {
 
   return (
     <div className="bg-[#001429] relative">
-      <nav className="text-white px-6 py-4">
-        <div className="flex justify-center items-center">
+      <nav className="text-white px-3 py-3 lg:px-6 lg:py-4">
+        <div className="flex justify-between items-center">
           {/* Logo and Icon */}
-          <Link href="/" className="absolute left-0">
-            <div className="flex items-center mx-4 md:mx-10 lg:mx-60">
+          <div className=" mx-4 md:mx-10 lg:mx-20 xl:mx-40 2xl:mx-60 ">
+            <Link href="/" className="flex items-center">
               <Image src={LogoIcon} alt="grove-icon" className="w-5 mr-2" />
               <Image
                 src={GroveLogo}
                 alt="The Grove"
-                className="w-24 md:w-32 lg:w-auto"
+                className="w-24 md:w-32 "
               />
-            </div>
-          </Link>
+            </Link>
+          </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center -ml-10">
             <Link
               href="/events"
               className="text-white text-base hover:text-gray-300 px-3 py-2 font-space -m-l-10"
@@ -41,7 +41,7 @@ export default function Navbar() {
           </div>
 
           {/* Profile Icon */}
-          <div className="absolute right-0 hidden md:flex items-center mx-10 lg:mx-60">
+          <div className="right-0 hidden md:flex items-center mx-16 lg:mx-16 2xl:mx-60">
             <svg
               width={26}
               height={27}
@@ -62,6 +62,10 @@ export default function Navbar() {
                 strokeWidth={0.380859}
               />
             </svg>
+          </div>
+
+          <div className="md:hidden px-2 py-2 lg:px-8 lg:py-4 shadow-custom-shadow bg-secondary text-white font-normal text-xs">
+            <button>Reserve Court</button>
           </div>
 
           {/* Mobile menu button */}

@@ -12,8 +12,8 @@ export default function Footer() {
         {/* Top Horizontal Bar */}
         <div className="border-t border-gray-600 w-full py-5 mt-10"></div>
 
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-4 items-start mt-10">
-          <div>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 items-start lg:mt-10">
+          <div className="flex justify-center items-center md:col-start-1 col-end-2 row-start-1 row-end-3 mb-5">
             <Image src={LogoFooter} alt="grove-icon" />
           </div>
 
@@ -59,11 +59,11 @@ export default function Footer() {
                 <input
                   type="email"
                   placeholder="Your email address"
-                  className="px-4 py-4 rounded-lg"
+                  className="p-4 rounded-lg"
                 />
                 <button
                   type="submit"
-                  className="absolute h-full mr-5 right-0 top-0 px-4 py-4 rounded-lg bg-white text-black font-bold"
+                  className="absolute h-full mr-5 md:right-0 md:top-0  px-4 py-4 rounded-r-lg bg-white text-black font-bold"
                 >
                   Submit
                 </button>
