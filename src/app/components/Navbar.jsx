@@ -10,10 +10,10 @@ export default function Navbar() {
 
   return (
     <div className="bg-[#001429] relative">
-      <nav className="text-white px-3 py-3 lg:px-6 lg:py-4">
+      <nav className="text-white px-3 py-3 lg:px-6 lg:py-4 mx-5 md:mx-10 lg:mx-20 2xl:mx-60">
         <div className="flex justify-between items-center">
           {/* Logo and Icon */}
-          <div className=" mx-4 md:mx-10 lg:mx-20 xl:mx-40 2xl:mx-60 ">
+          <div className="">
             <Link href="/" className="flex items-center">
               <Image src={LogoIcon} alt="grove-icon" className="w-5 mr-2" />
               <Image
@@ -41,8 +41,8 @@ export default function Navbar() {
           </div>
 
           {/* Profile Icon */}
-          <div className="right-0 hidden md:flex items-center mx-16 lg:mx-16 2xl:mx-60">
-            <svg
+          <div className="right-0 hidden md:flex items-center">
+            {/* <svg
               width={26}
               height={27}
               viewBox="0 0 26 27"
@@ -61,7 +61,10 @@ export default function Navbar() {
                 stroke="white"
                 strokeWidth={0.380859}
               />
-            </svg>
+            </svg> */}
+            <button className="px-2 py-2 lg:px-8 lg:py-4 shadow-custom-shadow bg-secondary rounded-xl text-white font-normal text-xs">
+              Reserve Court
+            </button>
           </div>
 
           <div className="md:hidden px-2 py-2 lg:px-8 lg:py-4 shadow-custom-shadow bg-secondary text-white font-normal text-xs">
@@ -92,14 +95,14 @@ export default function Navbar() {
 
         {/* Mobile Menu */}
         <div className={`md:hidden ${isOpen ? "block" : "hidden"}`}>
-          <a
-            href="#"
+          <Link
+            href="/events"
             className="block text-gray-300 hover:text-white px-3 py-2 rounded"
           >
             Private Events
-          </a>
+          </Link>
           <a
-            href="#"
+            href="/sponsorship"
             className="block text-gray-300 hover:text-white px-3 py-2 rounded"
           >
             Sponsorship

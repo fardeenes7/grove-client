@@ -4,6 +4,7 @@ import GroveImg from "../../../public/assets/GroveHeader.png";
 import WelcomeImg from "../../../public/assets/welcome_img.svg";
 import Subscribe from "./Subscribe";
 import SubscribeCTA from "./SubscribeCTA";
+import MyCarousel from "./MyCarousel";
 
 const Front = () => {
   return (
@@ -21,8 +22,8 @@ const Front = () => {
         <SubscribeCTA />
 
         <div className="bg-white">
-          <div className="container mx-auto px-4 md:p-6 md:px-6  lg:px-32">
-            <div className="relative flex flex-col md:flex-row items-center justify-between lg:h-[80vh]">
+          <div className="container mx-auto ">
+            <div className="relative flex flex-col md:flex-row items-center justify-between lg:h-[80vh] px-4 md:p-6 md:px-6 lg:px-24 xl:px-32">
               {/*Background_Image*/}
               <div className="absolute inset-0 bg-[url('/Vector.svg')] bg-center bg-contain bg-fixed bg-no-repeat z-0"></div>
               {/* Logo */}
@@ -30,7 +31,7 @@ const Front = () => {
                 <Image
                   src={WelcomeImg}
                   alt="welcome-grove"
-                  className="h-[50vh]"
+                  className="h-[50vh] md:h-full"
                 />
               </div>
               {/* Text */}
@@ -62,6 +63,7 @@ const Front = () => {
           </div>
         </div>
         <Subscribe />
+        <MyCarousel />
       </div>
     </div>
   );

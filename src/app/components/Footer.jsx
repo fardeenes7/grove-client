@@ -4,17 +4,20 @@ import InstaIcon from "../../../public/assets/insta_icon.svg";
 import TwitterIcon from "../../../public/assets/twitter.svg";
 import FbIcon from "../../../public/assets/fb.svg";
 import LinkedIn from "../../../public/assets/linkedin.svg";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="bg-primary text-white px-4 md:px-6 py-4">
       <div className="container mx-auto">
         {/* Top Horizontal Bar */}
-        <div className="border-t border-gray-600 w-full py-5 mt-10"></div>
+        <div className="border-t border-gray-600 w-full py-5 mt-5 md:mt-10"></div>
 
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 items-start lg:mt-10">
           <div className="flex justify-center items-center md:col-start-1 col-end-2 row-start-1 row-end-3 mb-5">
-            <Image src={LogoFooter} alt="grove-icon" />
+            <Link href="/">
+              <Image src={LogoFooter} alt="grove-icon" />
+            </Link>
           </div>
 
           <div>
@@ -29,8 +32,12 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-secondary">OTHER</h3>
             <ul className="flex flex-col gap-2 mt-2 text-gray-300">
-              <li>Sponsorship</li>
-              <li>Corporate Events</li>
+              <Link href="/sponsorship">
+                <li>Sponsorship</li>
+              </Link>
+              <Link href="/events">
+                <li>Private Events</li>
+              </Link>
             </ul>
           </div>
           <div>

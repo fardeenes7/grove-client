@@ -9,14 +9,14 @@ const SubscribeCTA = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="container mx-auto">
-      <div className="flex flex-col md:flex-row items-center justify-around px-6 py-4 md:py-14 lg:py-16 md:mx-10 lg:mx-32">
+      <div className="flex flex-col md:flex-row items-center justify-around px-6 py-4 md:py-14 lg:py-16 md:mx-10 lg:mx-10 xl:mx-32">
         <div className="flex flex-col items-center md:flex-row text-white mb-4 md:mb-0">
           <Image alt="" src={SunShape} />
           <div className="ml-5 flex flex-col">
-            <h2 className="font-black text-xl md:text-2xl lg:text-5xl">
+            <h2 className="font-black text-xl md:text-2xl lg:text-4xl xl:text-5xl">
               SUBSCRIBE & STAY UPDATED!
             </h2>
-            <p className="font-bold text-xl md:text-2xl lg:text-4xl italic tracking-widest">
+            <p className="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl italic tracking-widest">
               COMING FEBRUARY 2024
             </p>
           </div>
