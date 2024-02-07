@@ -9,15 +9,15 @@ const page = () => {
   return (
     <>
       {/* landing page section */}
-      <div className="flex flex-col md:flex-row 2xl:py-10 md:items-center lg:items-start 2xl:items-start mt-40">
-        <div className="flex flex-1 flex-col items-center md:items-end 2xl:mr-10">
+      <div className="flex flex-col md:flex-row 2xl:py-10 md:items-center lg:items-start 2xl:items-start mt-20 lg:mt-40">
+        <div className="lg:flex flex-1 flex-col items-center md:items-end 2xl:mr-10 hidden">
           <div className="w-full 2xl:w-2/3 sm:min-h-[50vh]">
             <Image src={WelcomeImg} alt="" className="w-full lg:w-3/4" />
             <div className="hidden md:hidden md:pl-16 lg:-mt-8 lg:flex flex-col ">
               <h1 className="text-gray-700 font-bold text-4xl md:text-5xl 3xl:text-7xl">
                 THE GROVE SPONSORS
               </h1>
-              <h2 className="text-2xl md:text-3xl font-semibold my-2 md:my-4 text-gray-700">
+              <h2 className="text-2xl text-center md:text-left md:text-3xl font-semibold my-2 md:my-4 text-gray-700">
                 Thanks to the sponsors that make The Grove possible.
               </h2>
               <p className="text-sm md:text-lg leading-none font-normal text-gray-700 my-2 md:my-3">
@@ -45,7 +45,7 @@ const page = () => {
         <h1 className="text-gray-700 font-bold text-4xl md:text-5xl lg:text-7xl">
           THE GROVE SPONSORS
         </h1>
-        <h2 className="text-2xl md:text-3xl font-semibold my-2 md:my-4 text-gray-700">
+        <h2 className="text-2xl text-center lg:text-left md:text-3xl font-semibold my-2 md:my-4 text-gray-700">
           Thanks to the sponsors that make The Grove possible.
         </h2>
         <p className="text-sm md:text-lg leading-none font-normal text-gray-700 my-2 md:my-3">

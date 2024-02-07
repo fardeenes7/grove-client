@@ -36,8 +36,8 @@ function CustomModal({ isOpen, onRequestClose }) {
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      className="bg-primary text-white rounded px-6 py-4 z-20 relative"
-      overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20 shadow-lg shadow-cyan-500/50"
+      className="bg-primary text-white rounded px-6 py-8 z-20 relative shadow-[0px_0px_250px_5px_rgba(0,0,0,0.3)] shadow-cyan-500/50"
+      overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20 shadow-lg"
     >
       <div className="flex flex-col sm:flex-row items-center ">
         <Image

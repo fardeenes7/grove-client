@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import LogoIcon from "../../../public/assets/logo_icon.svg";
-// import GroveLogo from "../../../public/assets/grove_white.png";
 import GroveLogo from "../../../public/assets/grove-logo-h.png";
 
 import { useState } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
+  
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -41,8 +41,8 @@ export default function Navbar() {
 
         
 
-          <div className="px-2 py-2 lg:px-8 lg:py-[14px] shadow-custom-shadow bg-secondary text-white font-normal text-xs md:text-base lg:font-medium">
-            <button>Reserve Court</button>
+          <div>
+            <Link href="/sponsorship" className="px-4 py-2 lg:px-8 lg:py-[14px] shadow-custom-shadow bg-secondary text-white font-normal text-md md:text-base lg:font-medium">Reserve Court</Link>
           </div>
 
           {/* Mobile menu button */}
@@ -68,19 +68,20 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden ${isOpen ? "block" : "hidden"} text-center md:text-end py-8`}>
+        <div className={`md:hidden ${isOpen ? "block" : "hidden"} text-center md:text-end py-8 mobile_menu show`}>
           <Link
             href="/events"
+        
             className="block text-gray-300 hover:text-white px-3 py-2 rounded"
           >
             Private Events
           </Link>
-          <a
+          <Link
             href="/sponsorship"
             className="block text-gray-300 hover:text-white px-3 py-2 rounded"
           >
             Sponsorship
-          </a>
+          </Link>
         </div>
       </nav>
     </div>
