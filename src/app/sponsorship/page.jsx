@@ -9,12 +9,12 @@ const page = () => {
   return (
     <>
       {/* landing page section */}
-      <div className="flex flex-col md:flex-row 2xl:py-10 md:items-center lg:items-start 2xl:items-start">
+      <div className="flex flex-col md:flex-row 2xl:py-10 md:items-center lg:items-start 2xl:items-start mt-40">
         <div className="flex flex-1 flex-col items-center md:items-end 2xl:mr-10">
           <div className="w-full 2xl:w-2/3 sm:min-h-[50vh]">
             <Image src={WelcomeImg} alt="" className="w-full lg:w-3/4" />
             <div className="hidden md:hidden md:pl-16 lg:-mt-8 lg:flex flex-col ">
-              <h1 className="text-gray-700 font-bold text-4xl md:text-5xl 2xl:text-7xl">
+              <h1 className="text-gray-700 font-bold text-4xl md:text-5xl 3xl:text-7xl">
                 THE GROVE SPONSORS
               </h1>
               <h2 className="text-2xl md:text-3xl font-semibold my-2 md:my-4 text-gray-700">
@@ -26,7 +26,7 @@ const page = () => {
               </p>
               <span className="text-sm md:text-base font-semibold text-primary my-2">
                 Interested in sponsorship?{" "}
-                <Link className="underline" href="/sponsorship">
+                <Link className="underline" href="/sponsorship#sponsors">
                   Become a Sponsor?
                 </Link>
               </span>
@@ -54,19 +54,19 @@ const page = () => {
         </p>
         <span className="text-sm md:text-base font-semibold text-primary my-2">
           Interested in sponsorship?{" "}
-          <Link className="underline" href="/sponsorship">
+          <Link className="underline" href="/sponsorship#sponsors">
             Become a Sponsor?
           </Link>
         </span>
       </div>
 
-      <div className="relative bg-gray-200 mt-5 lg:mt-16">
+      <div id="sponsors" className="relative bg-gray-200 mt-5 lg:mt-16">
         <div className="flex flex-col items-center relative z-10 px-4 md:px-0">
-          <h1 className="text-4xl text-center md:text-5xl 2xl:text-9xl font-black 2xl:mb-4 uppercase text-primary py-6 md:py-8 lg:py-14 2xl:pt-48 2xl:pb-24">
+          <h1 className="text-4xl text-center md:text-5xl 2xl:text-8xl 3xl:text-9xl font-black 2xl:mb-4 uppercase text-primary py-6 md:py-8 lg:py-14 2xl:pt-48 2xl:pb-24">
             Become a Sponsor
           </h1>
-          <div className="inline-block w-full md:w-3/5 mx-auto bg-white p-8 md:p-20 -mb-20 relative z-10">
-            <h2 className="text-2xl md:text-4xl font-light text-myGray">
+          <div className="inline-block w-full md:w-3/5 mx-auto bg-white p-4 md:p-20 -mb-20 relative z-10">
+            <h2  className="text-2xl md:text-4xl font-light text-myGray">
               Interested in talking sponsorship
             </h2>
             <p className="text-base md:text-lg font-normal my-2 text-myGray">
@@ -124,7 +124,7 @@ const page = () => {
               <textarea className="px-4 py-4 bg-gray-100 rounded-sm w-full"></textarea>
               <button
                 type="submit"
-                className="p-4 bg-blue-700 text-white w-24 mt-8 rounded-md"
+                className="p-4 bg-[#329bec] text-white w-24 mt-8 rounded-md"
               >
                 Submit
               </button>

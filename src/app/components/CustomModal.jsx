@@ -37,9 +37,9 @@ function CustomModal({ isOpen, onRequestClose }) {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       className="bg-primary text-white rounded px-6 py-4 z-20 relative"
-      overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20"
+      overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20 shadow-lg shadow-cyan-500/50"
     >
-      <div className="flex flex-col sm:flex-row items-center">
+      <div className="flex flex-col sm:flex-row items-center ">
         <Image
           src={WelcomeImg}
           alt="welcome_to_grove"
