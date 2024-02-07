@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <Head>
         <title>{metadata.title}</title>
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="../../src/app/favicon.ico" type="image/x-icon" />
         <meta name="description" content={metadata.description}></meta>
      
       </Head>
