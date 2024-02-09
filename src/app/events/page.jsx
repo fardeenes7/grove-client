@@ -1,10 +1,40 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import GroveWhite from "../../../public/assets/grove_white_2.png";
 import GroveCourtA from "../../../public/assets/grove_court_angle_A.png";
 import GroveCourtB from "../../../public/assets/grove_court_angle_B.png";
 import Image from "next/image";
+import axios from "../lib/axios";
 
 const page = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    companyName: "",
+    eventType: "",
+    guestCount: "",
+    eventDate: "",
+    eventStartTime: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Make POST request with form data
+      const response = await axios.post("/api/book-event", formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="bg-primary">
       <div className="container mx-auto px-[20%] py-10">
@@ -46,6 +76,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="firstName"
+                onChange={handleChange}
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -53,6 +85,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="lastName"
+                onChange={handleChange}
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -60,6 +94,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="phone"
+                onChange={handleChange}
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -67,6 +103,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="email"
+                onChange={handleChange}
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -74,6 +112,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="companyName"
+                onChange={handleChange}
               />
             </label>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -81,6 +121,8 @@ const page = () => {
               <textarea
                 type="text"
                 className="shadow appearance-none border rounded-xl w-full py-4 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={handleChange}
+                name="eventType"
               />
               <span className="text-xs text-gray-400">
                 Company event, birthday party, private clinic, etc.
@@ -91,6 +133,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="guestCount"
+                onChange={handleChange}
               />
               <span className="text-xs text-gray-400">
                 Please not we have maximum capacity of 120 guests.
@@ -101,6 +145,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="eventDate"
+                onChange={handleChange}
               />
               <span className="text-xs text-gray-400">
                 If you&apos;re not sure, leave it blank.
@@ -111,6 +157,8 @@ const page = () => {
               <input
                 type="text"
                 className="shadow appearance-none border rounded-full w-full py-2 px-3 bg-gray-100 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="eventStartDate"
+                onChange={handleChange}
               />
               <span className="text-xs text-gray-400">
                 Please not we have a 3 hour minimum rental.
@@ -120,6 +168,7 @@ const page = () => {
             <button
               type="submit"
               className="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+              onClick={handleSubmit}
             >
               Submit
             </button>

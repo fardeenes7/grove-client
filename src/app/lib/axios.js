@@ -1,12 +1,11 @@
-import axios from 'axios';
-import Cookies from 'js-cookie'; // You need to install js-cookie
+import axios from "axios";
+import Cookies from "js-cookie"; // You need to install js-cookie
 
 const BASE_URL = "http://localhost:8000";
 
 // Create an axios instance
 const instance = axios.create({
   baseURL: `${BASE_URL}`,
-  withCredentials: true,
 });
 
 instance.interceptors.request.use(async (config) => {
@@ -15,11 +14,12 @@ instance.interceptors.request.use(async (config) => {
     await axios.get(`${BASE_URL}/sanctum/csrf-cookie`);
 
     // Get the CSRF token from the cookie
-    const csrfToken = Cookies.get('XSRF-TOKEN');
+    const csrfToken = Cookies.get("XSRF-TOKEN");
 
     if (csrfToken) {
+      console.log(csrfToken);
       // If the CSRF token is available, set it in the headers
-      config.headers['X-XSRF-TOKEN'] = csrfToken;
+      config.headers["X-CSRF-TOKEN"] = csrfToken;
     }
 
     return config;
@@ -28,10 +28,10 @@ instance.interceptors.request.use(async (config) => {
   }
 });
 
-instance.interceptors.request.use(function (config) {
-  const token = localStorage.getItem("token");
-  config.headers.Authorization = token ? `Bearer ${token}` : "";
-  return config;
-});
+// instance.interceptors.request.use(function (config) {
+//   const token = localStorage.getItem("token");
+//   config.headers.Authorization = token ? `Bearer ${token}` : "";
+//   return config;
+// });
 
 export default instance;
