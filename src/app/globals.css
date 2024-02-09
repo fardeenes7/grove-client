@@ -15,10 +15,47 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
+@font-face {
+  font-family: 'MontserratReg';
+  src: url('../../public/font/Montserrat-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'MontserratBold';
+  src: url('../../public/font/Montserrat-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'MontserratSemiBold';
+  src: url('../../public/font/Montserrat-SemiBold.ttf');
+}
+
+
+@font-face {
+  font-family: 'MontserratExtraBold';
+  src: url('../../public/font/Montserrat-ExtraBold.ttf');
+}
+
+
 
 body {
+  font-family: 'MontserratReg', sans-serif;
+  scroll-behavior: smooth;
 
 }
+
+h1,
+h2,
+h3{
+  font-family: 'MontserratBold', sans-serif;
+}
+
+.font-c-bold{
+  font-family:"MontserratExtraBold", sans-serif ;
+}
+
+
+
 
 @layer utilities {
   .text-balance {
