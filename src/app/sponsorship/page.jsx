@@ -1,13 +1,129 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import SponsorImg from "../../../public/assets/sponsor_img.png";
 import WelcomeImg from "../../../public/assets/welcome_img.svg";
 import BatImg from "../../../public/assets/bat_img.png";
 import Link from "next/link";
+import axios from "../lib/axios";
+import { toast } from "react-toastify";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
-const page = () => {
+const Page = () => {
+  const Form = () => {
+    const [formData, setFormData] = useState({
+      name: "",
+      phone: "",
+      email: "",
+      company: "",
+      info: "",
+    });
+    const [loading, setLoading] = useState(false);
+    const { executeRecaptcha } = useGoogleReCaptcha();
+
+    const handleChange = (e) => {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+
+      try {
+        // Make POST request with form data
+        const token = await executeRecaptcha("submit_form");
+
+        const response = await axios.post("/api/sponsorship", {
+          ...formData,
+          "g-recaptcha-response": token,
+        });
+        if (response.data.status === "success") {
+          setLoading(false);
+          toast.success("Thanks for your interest!");
+        }
+      } catch (error) {
+        setLoading(false);
+        console.error(error);
+      }
+    };
+    return (
+      <form className="flex flex-col text-myGray" onSubmit={handleSubmit}>
+        <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg lg:space-x-4">
+          <div className="flex-1 flex flex-col w-full">
+            <label>
+              Name <span className="italic text-red-500">{"(Required)"}</span>
+            </label>
+            <input
+              type="text"
+              className="px-4 py-2 bg-gray-100 rounded-sm mb-5"
+              name="name"
+              onChange={handleChange}
+              required
+            />
+            <label>
+              Phone Number{" "}
+              <span className="italic text-red-500">{"(Required)"}</span>
+            </label>
+            <input
+              type="text"
+              className="px-4 py-2 bg-gray-100 rounded-sm"
+              name="phone"
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="flex-1 flex flex-col w-full">
+            <label>
+              Company{" "}
+              <span className="italic text-red-500">{"(Optional)"}</span>
+            </label>
+            <input
+              type="text"
+              className="px-4 py-2 bg-gray-100 rounded-sm mb-5"
+              name="company"
+              onChange={handleChange}
+              required
+            />
+            <label>
+              Email <span className="italic text-red-500">{"(Required)"}</span>
+            </label>
+            <input
+              type="text"
+              className="px-4 py-2 bg-gray-100 rounded-sm"
+              name="email"
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+        <label className="mt-5">What are you looking for?</label>
+        <textarea
+          className="px-4 py-4 bg-gray-100 rounded-sm w-full"
+          name="info"
+          onChange={handleChange}
+          required
+        ></textarea>
+
+        <button
+          type="submit"
+          className={`p-4 bg-[#329bec] text-white w-24 mt-8 rounded-md ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
+          }`}
+        >
+          {loading ? (
+            <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white text-center"></div>
+          ) : (
+            "Submit"
+          )}
+        </button>
+      </form>
+    );
+  };
   return (
-    <>
+    <GoogleReCaptchaProvider reCaptchaKey="6LdJvmwpAAAAAAErnWhQ3FjvKC6CG9WQ7TXUusly">
       {/* landing page section */}
       <div className="flex flex-col md:flex-row 2xl:py-10 md:items-center lg:items-start 2xl:items-start mt-20 lg:mt-40">
         <div className="lg:flex flex-1 flex-col items-center md:items-end 2xl:mr-10 hidden">
@@ -66,7 +182,7 @@ const page = () => {
             Become a Sponsor
           </h1>
           <div className="inline-block w-full md:w-3/5 mx-auto bg-white p-4 md:p-20 -mb-20 relative z-10">
-            <h2  className="text-2xl md:text-4xl font-light text-myGray">
+            <h2 className="text-2xl md:text-4xl font-light text-myGray">
               Interested in talking sponsorship
             </h2>
             <p className="text-base md:text-lg font-normal my-2 text-myGray">
@@ -81,54 +197,7 @@ const page = () => {
             <p className="text-base md:text-lg font-normal my-5 text-myGray">
               Fill out the form below to get started.
             </p>
-            <form className="flex flex-col text-myGray">
-              <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg lg:space-x-4">
-                <div className="flex-1 flex flex-col w-full">
-                  <label>
-                    Name{" "}
-                    <span className="italic text-red-500">{"(Required)"}</span>
-                  </label>
-                  <input
-                    type="text"
-                    className="px-4 py-2 bg-gray-100 rounded-sm mb-5"
-                  />
-                  <label>
-                    Phone Number{" "}
-                    <span className="italic text-red-500">{"(Required)"}</span>
-                  </label>
-                  <input
-                    type="text"
-                    className="px-4 py-2 bg-gray-100 rounded-sm"
-                  />
-                </div>
-                <div className="flex-1 flex flex-col w-full">
-                  <label>
-                    Company{" "}
-                    <span className="italic text-red-500">{"(Optional)"}</span>
-                  </label>
-                  <input
-                    type="text"
-                    className="px-4 py-2 bg-gray-100 rounded-sm mb-5"
-                  />
-                  <label>
-                    Email{" "}
-                    <span className="italic text-red-500">{"(Required)"}</span>
-                  </label>
-                  <input
-                    type="text"
-                    className="px-4 py-2 bg-gray-100 rounded-sm"
-                  />
-                </div>
-              </div>
-              <label className="mt-5">What are you looking for?</label>
-              <textarea className="px-4 py-4 bg-gray-100 rounded-sm w-full"></textarea>
-              <button
-                type="submit"
-                className="p-4 bg-[#329bec] text-white w-24 mt-8 rounded-md"
-              >
-                Submit
-              </button>
-            </form>
+            <Form />
           </div>
         </div>
       </div>
@@ -137,8 +206,8 @@ const page = () => {
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <Image src={BatImg} alt="" className="w-full h-full object-cover" />
       </div>
-    </>
+    </GoogleReCaptchaProvider>
   );
 };
 
-export default page;
+export default Page;

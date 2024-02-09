@@ -7,7 +7,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function Navbar() {
-  
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -17,9 +16,16 @@ export default function Navbar() {
           {/* Logo and Icon */}
           <div className="">
             <Link href="/" className="flex items-center">
-              <Image src={GroveLogo} alt="grove-logo" className="mr-2 d hidden md:block"/>
-              <Image src={LogoIcon} alt="grove-icon" className="mr-2 md:hidden" />
-            
+              <Image
+                src={GroveLogo}
+                alt="grove-logo"
+                className="mr-2 d hidden md:block"
+              />
+              <Image
+                src={LogoIcon}
+                alt="grove-icon"
+                className="mr-2 md:hidden"
+              />
             </Link>
           </div>
 
@@ -39,10 +45,13 @@ export default function Navbar() {
             </Link>
           </div>
 
-        
-
           <div>
-            <Link href="/sponsorship" className="px-4 py-2 lg:px-8 lg:py-[14px] shadow-custom-shadow bg-secondary text-white font-normal text-md md:text-base lg:font-medium">Reserve Court</Link>
+            <Link
+              href="/sponsorship"
+              className="px-4 py-2 lg:px-8 lg:py-[14px] shadow-custom-shadow bg-secondary text-white font-normal text-md md:text-base lg:font-medium"
+            >
+              Reserve Court
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -68,10 +77,14 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden ${isOpen ? "block" : "hidden"} text-center md:text-end py-8 mobile_menu show`}>
+        <div
+          className={`md:hidden ${
+            isOpen ? "block" : "hidden"
+          } text-center md:text-end py-8 mobile_menu show`}
+        >
           <Link
             href="/events"
-        
+            onClick={() => setIsOpen(!isOpen)}
             className="block text-gray-300 hover:text-white px-3 py-2 rounded"
           >
             Private Events
@@ -79,6 +92,7 @@ export default function Navbar() {
           <Link
             href="/sponsorship"
             className="block text-gray-300 hover:text-white px-3 py-2 rounded"
+            onClick={() => setIsOpen(!isOpen)}
           >
             Sponsorship
           </Link>

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import axios from "axios";
 import Modal from "react-modal";
 import WelcomeImg from "../../../public/assets/welcome_img.svg";
 import Image from "next/image";
+import axios from "../lib/axios";
+import { toast } from "react-toastify";
 
 Modal.setAppElement("#root"); // replace '#root' with your app element id
 
@@ -20,11 +21,10 @@ function CustomModal({ isOpen, onRequestClose }) {
     event.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://api.example.com/subscribe",
-        formData
-      );
-      console.log(response.data);
+      const response = await axios.post("/api/newsletter/subscribe", formData);
+      if (response.data.status === "success") {
+        toast.success("Thanks for subscription!");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -36,7 +36,7 @@ function CustomModal({ isOpen, onRequestClose }) {
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      className="bg-primary text-white rounded px-6 py-8 z-20 relative shadow-[0px_0px_250px_5px_rgba(0,0,0,0.3)] shadow-cyan-500/50"
+      className="bg-primary rounded px-6 py-8 z-20 relative shadow-[0px_0px_250px_5px_rgba(0,0,0,0.3)] shadow-cyan-500/50"
       overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20 shadow-lg"
     >
       <div className="flex flex-col sm:flex-row items-center ">
@@ -50,22 +50,22 @@ function CustomModal({ isOpen, onRequestClose }) {
           onSubmit={handleSubmit}
           className="w-full mt-4 sm:mt-0 sm:w-1/2 sm:ml-4 gap-4 flex flex-col"
         >
-         
           <input
             type="text"
             name="name"
             onChange={handleInputChange}
             placeholder="Name"
             className="mt-1 block w-full py-3 px-4 rounded-md bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            required
           />
 
-        
           <input
             type="email"
             name="email"
             onChange={handleInputChange}
             placeholder="Email"
             className="mt-1 block w-full py-3 px-4 rounded-md bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            required
           />
 
           <button

@@ -17,7 +17,6 @@ instance.interceptors.request.use(async (config) => {
     const csrfToken = Cookies.get("XSRF-TOKEN");
 
     if (csrfToken) {
-      console.log(csrfToken);
       // If the CSRF token is available, set it in the headers
       config.headers["X-CSRF-TOKEN"] = csrfToken;
     }

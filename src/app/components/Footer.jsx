@@ -5,6 +5,7 @@ import TwitterIcon from "../../../public/assets/twitter.svg";
 import FbIcon from "../../../public/assets/fb.svg";
 import LinkedIn from "../../../public/assets/linkedin.svg";
 import Link from "next/link";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function Footer() {
   return (
@@ -44,13 +45,17 @@ export default function Footer() {
             <h3 className="font-bold text-secondary">FOLLOW US</h3>
             <ul className="flex gap-4 items-center mt-2 text-gray-300">
               <li>
-                <Image src={InstaIcon} alt="" />
+                <a href="https://www.instagram.com/grovepickleball/">
+                  <Image src={InstaIcon} alt="grove_insta_profile" />
+                </a>
               </li>
               <li>
                 <Image src={TwitterIcon} alt="" />
               </li>
               <li>
-                <Image src={FbIcon} alt="" />
+                <a href="https://www.facebook.com/grovepickleball">
+                  <Image src={FbIcon} alt="" />
+                </a>
               </li>
               <li>
                 <Image src={LinkedIn} alt="" />
@@ -59,24 +64,7 @@ export default function Footer() {
           </div>
 
           {/* Newsletter Signup */}
-          <div>
-            <h3 className="font-bold mb-2">Be the first to know</h3>
-            <form>
-              <div className="relative flex">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="p-4 rounded-lg text-black focus:outline-none pr-[3.5rem]"
-                />
-                <button
-                  type="submit"
-                  className="absolute h-full mr-5 md:right-[-30px] right-0 2xl:right-0 md:top-0 px-4 md:pr-4 py-4 rounded-r-lg bg-white text-black font-bold"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          </div>
+          <NewsletterSignup />
         </div>
 
         <p className="mt-4 text-sm text-gray-500">
