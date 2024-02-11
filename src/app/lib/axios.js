@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie"; // You need to install js-cookie
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "https://api.grovepickleball.com";
 
 // Create an axios instance
 const instance = axios.create({
