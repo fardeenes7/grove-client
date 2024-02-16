@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { newsletterForm } from "../../lib/actions";
 
 const NewsletterSignup = () => {
     const [formData, setFormData] = useState({
@@ -15,38 +16,20 @@ const NewsletterSignup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-
-        try {
-            // Make POST request with form data
-            const response = await fetch(
-                `${process.env.NEXT_PUBLIC_API_BASE_URL}/newsletter/subscribe/`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formData),
-                }
-            );
-            const data = await response.json();
-            if (response.status === 201) {
-                toast.success("You have been subscribed to our newsletter");
-            } else {
-                throw new Error(data.message);
-            }
-            setFormData({ email: "" });
-            document.getElementById("email").value = "";
-            setLoading(false);
-        } catch (error) {
-            setLoading(false);
-            toast.error(`Error: ${error.message}`);
+        const response = await newsletterForm(formData);
+        if (response.status === 201) {
+            toast.success(response.message);
+        } else {
+            toast.error(response.message);
         }
+        document.getElementById("newsletter_form").reset();
+        setLoading(false);
     };
 
     return (
         <div>
             <h3 className="font-bold mb-2">Be the first to know</h3>
-            <form onSubmit={handleSubmit}>
+            <form id="newsletter_form" onSubmit={handleSubmit}>
                 <div className="relative flex">
                     <input
                         id="email"

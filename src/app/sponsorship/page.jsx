@@ -35,7 +35,7 @@ const Page = () => {
                 // Make POST request with form data
                 const token = await executeRecaptcha("submit_form");
                 const response = await fetch(
-                    `${process.env.API_BASE_URL}/sponsorship`,
+                    `${process.env.API_BASE_URL}/sponsorship/`,
                     {
                         method: "POST",
                         headers: {
@@ -44,15 +44,18 @@ const Page = () => {
                         body: JSON.stringify({ ...formData, token }),
                     }
                 );
+                const data = await response.json();
                 if (response.status === 201) {
-                    toast.success("Form submitted successfully");
+                    toast.success(
+                        "Form submitted successfully. You will be contacted soon."
+                    );
                 } else {
-                    toast.error("Form submission failed");
+                    throw new Error(data.message);
                 }
             } catch (error) {
-                setLoading(false);
-                console.error(error);
+                toast.error(`Error: ${error.message}`);
             }
+            setLoading(false);
         };
         return (
             <form className="flex flex-col text-myGray" onSubmit={handleSubmit}>
