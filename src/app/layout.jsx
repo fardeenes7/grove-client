@@ -6,9 +6,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
+    metadataBase: new URL("https://grove-client.vercel.app"),
     title: "The Grove",
     description:
         "The first indoor pickleball venue in Dallas, TX opening in February of 2024, boasting two premier courts for players to enjoy. Upon opening, players in the Dallas area can now play the sport year-round regardless of weather conditions.",
+    openGraph: {
+        images: "/opengraph-image.png",
+    },
 };
 
 export default function RootLayout({ children }) {
