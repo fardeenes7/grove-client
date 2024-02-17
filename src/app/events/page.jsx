@@ -9,6 +9,7 @@ import {
     GoogleReCaptchaProvider,
     useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import { CreateEventBooking } from "@/lib/actions";
 
 const Page = () => {
     const Form = () => {
@@ -33,27 +34,11 @@ const Page = () => {
         const handleSubmit = async (e) => {
             e.preventDefault();
             setLoading(true);
-            try {
-                const token = await executeRecaptcha("submit_form");
-                const response = await fetch(
-                    `${process.env.API_BASE_URL}/book-event/`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ ...formData, token }),
-                    }
-                );
-                const data = await response.json();
-                if (response.status === 201) {
-                    toast.success(data.message);
-                    document.getElementById("event_form").reset();
-                } else {
-                    throw new Error(data.message);
-                }
-            } catch (error) {
-                toast.error(`Error: ${error.message}`);
+            const response = await CreateEventBooking(formData);
+            if (response.status === 201) {
+                toast.success(response.message);
+            } else {
+                toast.error(response.message);
             }
             setLoading(false);
         };

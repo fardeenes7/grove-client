@@ -10,6 +10,7 @@ import {
     GoogleReCaptchaProvider,
     useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import { CreateSponsorshipRequest } from "@/lib/actions";
 
 const Page = () => {
     const Form = () => {
@@ -31,29 +32,11 @@ const Page = () => {
             e.preventDefault();
             setLoading(true);
 
-            try {
-                // Make POST request with form data
-                const token = await executeRecaptcha("submit_form");
-                const response = await fetch(
-                    `${process.env.API_BASE_URL}/sponsorship/`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify({ ...formData, token }),
-                    }
-                );
-                const data = await response.json();
-                if (response.status === 201) {
-                    toast.success(
-                        "Form submitted successfully. You will be contacted soon."
-                    );
-                } else {
-                    throw new Error(data.message);
-                }
-            } catch (error) {
-                toast.error(`Error: ${error.message}`);
+            const response = await CreateSponsorshipRequest(formData);
+            if (response.status === 201) {
+                toast.success(response.message);
+            } else {
+                toast.error(response.message);
             }
             setLoading(false);
         };
