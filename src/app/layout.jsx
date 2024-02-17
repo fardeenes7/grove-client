@@ -26,7 +26,6 @@ export default function RootLayout({ children }) {
             </Head>
             <body className="overflow-x-hidden">
                 <Providers>
-                    {children}
                     <Header />
                     {children}
                     <Footer />
