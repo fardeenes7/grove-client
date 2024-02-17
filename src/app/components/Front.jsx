@@ -17,8 +17,7 @@ const Front = () => {
                         alt="hero-image"
                         src={GroveImg}
                         fill
-                        objectFit="cover"
-                        objectPosition="center"
+                        className="object-cover object-center"
                     />
                 </div>
 
@@ -26,10 +25,8 @@ const Front = () => {
                     <Image
                         alt="hero-image"
                         src={GroveImgMob}
-                        className="md:hidden"
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="center"
+                        className="md:hidden object-cover object-center"
+                        fill
                     />
                 </div>
             </div>
