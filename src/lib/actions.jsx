@@ -35,7 +35,7 @@ export async function newsletterForm(formData) {
 export async function CreateEventBooking(formData) {
     try {
         const response = await fetch(
-            `${process.env.API_BASE_URL}/event-booking/`,
+            `${process.env.API_BASE_URL}/book-event/`,
             {
                 method: "POST",
                 headers: {
